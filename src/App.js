@@ -8,15 +8,16 @@ import {
   Route
 } from "react-router-dom";
 
-class App extends React.Component {
+import { withAuth0, isAuthenticated } from '@auth0/auth0-react';
 
+class App extends React.Component {
   render() {
-    console.log('app', this.props);
+    const { user, isAuthenticated } = this.props.auth0;
     return(
       <>
         <Router>
           <IsLoadingAndError>
-            <Header />
+            <Header auth0={this.props.auth0} />
             <Switch>
               <Route exact path="/">
                 {/* TODO: if the user is logged in, render the `MyFavoriteBooks` component, if they are not, render the `Login` component */}
@@ -31,4 +32,4 @@ class App extends React.Component {
   }
 }
 
-export default App;
+export default withAuth0(App);
