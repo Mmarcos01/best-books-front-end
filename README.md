@@ -1,4 +1,4 @@
-# Project Name
+# Book App
 
 **Authors**: [Marie Marcos](https://github.com/Mmarcos01) & [Tom McGuire](https://github.com/MuckT)
 
