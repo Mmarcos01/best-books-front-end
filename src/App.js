@@ -8,18 +8,24 @@ import {
   Route
 } from "react-router-dom";
 
-class App extends React.Component {
+import { withAuth0 } from '@auth0/auth0-react';
+import Bookshelf from './Components/Bookshelf/Bookshelf';
+import Profile from './Components/Profile/Profile';
 
+class App extends React.Component {
   render() {
-    console.log('app', this.props);
-    return(
+    return (
       <>
         <Router>
           <IsLoadingAndError>
             <Header />
             <Switch>
               <Route exact path="/">
+                <Bookshelf />
                 {/* TODO: if the user is logged in, render the `MyFavoriteBooks` component, if they are not, render the `Login` component */}
+              </Route>
+              <Route exact path="/profile">
+                <Profile />
               </Route>
               {/* TODO: add a route with a path of '/profile' that renders a `Profile` component */}
             </Switch>
@@ -31,4 +37,4 @@ class App extends React.Component {
   }
 }
 
-export default App;
+export default withAuth0(App);

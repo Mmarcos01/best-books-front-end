@@ -18,6 +18,8 @@
   npm start
   ```
 
+4. Use [Mailinator](https://www.mailinator.com/) to create a throwaway email if desired
+
 ## Architecture
 
 * A [React](https://reactjs.org/) app front end with [Auth0](https://auth0.com/) integration.
