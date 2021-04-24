@@ -1,10 +1,40 @@
-# Book App
+# Project Name
 
-This repository has starter code to begin your work on the book app.
+**Authors**: [Marie Marcos](https://github.com/Mmarcos01) & [Tom McGuire](https://github.com/MuckT)
 
-## Getting started
+## Getting Started
 
-TODO
+1. Clone the repository
+
+2. Install dependencies
+
+  ```bash
+  npm install
+  ```
+
+3. Run the App
+
+  ```bash
+  npm start
+  ```
+
+## Architecture
+
+* A [React](https://reactjs.org/) app front end with [Auth0](https://auth0.com/) integration.
+
+* An [Express](https://expressjs.com/) server.
+
+* A [MongoDB](mongodb.com) database.
+
+* Tested with [Cypress](https://www.cypress.io/)
+
+## Change Log
+
+| Time | Feature |
+| ---- | ---- |
+|04-24-2021 11:45am PST | Initialize Repository |
+
+<!-- TODO --->
 
 ## Team Agreement
 
