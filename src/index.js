@@ -1,7 +1,7 @@
-import React from "react";
-import ReactDOM from "react-dom";
-import App from "./App";
-import { Auth0Provider } from "@auth0/auth0-react";
+import React from 'react';
+import ReactDOM from 'react-dom';
+import App from './App';
+import { Auth0Provider } from '@auth0/auth0-react';
 
 // Auth0 Quickstart
 ReactDOM.render(
@@ -12,5 +12,5 @@ ReactDOM.render(
   >
     <App />
   </Auth0Provider>,
-  document.getElementById("root")
+  document.getElementById('root')
 );
