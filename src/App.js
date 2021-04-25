@@ -1,5 +1,5 @@
 import React from 'react';
-import Header from './Header';
+import Header from './Components/Header/Header';
 import IsLoadingAndError from './IsLoadingAndError';
 import Footer from './Footer';
 import {
@@ -20,7 +20,7 @@ class App extends React.Component {
           <IsLoadingAndError>
             <Header />
             <Switch>
-              <Route exact path="/">
+              <Route exact path="/bookshelf">
                 <Bookshelf />
                 {/* TODO: if the user is logged in, render the `MyFavoriteBooks` component, if they are not, render the `Login` component */}
               </Route>

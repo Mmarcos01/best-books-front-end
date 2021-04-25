@@ -5,3 +5,7 @@ a{
 a:hover{
   color:darkgrey;
 }
+
+.auth-button {
+  margin-top: 10px;
+}
