@@ -229,3 +229,6 @@ $RECYCLE.BIN/
 
 
 # End of https://www.gitignore.io/api/node,macos,linux,windows,webstorm,visualstudiocode
+
+# Cypress.env.json e2e testing
+Cypress.env.json
