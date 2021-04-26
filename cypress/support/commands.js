@@ -59,3 +59,18 @@ Cypress.Commands.add('login', (overrides = {}) => {
       cy.setCookie('_legacy_auth0.is.authenticated', 'true');
     });
 });
+
+// -- Save localStorage between tests
+let LOCAL_STORAGE_MEMORY = {};
+
+Cypress.Commands.add('saveLocalStorage', () => {
+  Object.keys(localStorage).forEach(key => {
+    LOCAL_STORAGE_MEMORY[key] = localStorage[key];
+  });
+});
+
+Cypress.Commands.add('restoreLocalStorage', () => {
+  Object.keys(LOCAL_STORAGE_MEMORY).forEach(key => {
+    localStorage.setItem(key, LOCAL_STORAGE_MEMORY[key]);
+  });
+});
