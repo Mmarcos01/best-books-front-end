@@ -17,9 +17,6 @@ class Profile extends React.Component {
               <Card.Body class='profile-body'>
                 <Card.Title>{user.name}</Card.Title>
                 <h6>{user.email}</h6>
-                <Card.Text>
-                Lorem ipsum dolor sit amet elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-    </Card.Text>
               </Card.Body>
             </Card>
           </div> : ''}
