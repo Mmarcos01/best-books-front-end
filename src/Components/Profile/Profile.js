@@ -17,7 +17,7 @@ class Profile extends React.Component {
               </div>
               <Card.Body class='profile-body'>
                 <Card.Title>{user.name}</Card.Title>
-                <h6>{user.email}</h6>
+                <h6 cy-data='user-email'>{user.email}</h6>
               </Card.Body>
             </Card>
           </div> : ''}

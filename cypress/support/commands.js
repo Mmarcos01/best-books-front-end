@@ -28,7 +28,8 @@ Cypress.Commands.add('login', (overrides = {}) => {
   Cypress.log({
     name: 'loginViaAuth0',
   });
-
+  cy.intercept('POST', Cypress.env('auth_url')).as('login');
+  cy.wait(100);
   const options = {
     method: 'POST',
     url: Cypress.env('auth_url'),
@@ -58,6 +59,8 @@ Cypress.Commands.add('login', (overrides = {}) => {
       cy.setCookie('auth0.is.authenticated', 'true');
       cy.setCookie('_legacy_auth0.is.authenticated', 'true');
     });
+  cy.wait(100);
+  cy.wait('@login');
 });
 
 // -- Save localStorage between tests
