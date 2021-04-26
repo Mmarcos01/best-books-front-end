@@ -10,7 +10,6 @@ describe('Authenticated', () => {
   });
 
   beforeEach(() => {
-    // cy.login();
     cy.restoreLocalStorage();
     Cypress.Cookies.defaults({
       preserve: /[\s\S]*/,
@@ -27,6 +26,15 @@ describe('Authenticated', () => {
   describe('Profile Page', () => {
     it('should see profile page', () => {
       cy.visit('profile');
+      cy.get('h2').should('contain.text', Cypress.env('auth_username'));
+      cy.get('[cy-data=logout-button]').should('be.visible');
+    });
+  });
+
+  describe('Bookshelf Page', () => {
+    it('should see bookshelf page', () => {
+      cy.visit('bookshelf');
+      cy.get('h1').should('contain.text', 'BookShelf');
       cy.get('[cy-data=logout-button]').should('be.visible');
     });
   });
