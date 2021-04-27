@@ -47,7 +47,7 @@ jobs:
           spec: cypress/integration/*.spec.js
         env:
           # pass the secret keys as an environment variable
-          AUTH_CLIENT_SECRET: ${{ secrets.auth_client_secret }}
-          AUTH_USERNAME: ${{ secrets.auth_username }}
-          AUTH_PASSWORD: ${{ secrets.auth_password }}
+          auth_client_secret: ${{ secrets.AUTH_CLIENT_SECRET }}
+          auth_username: ${{ secrets.AUTH_USERNAME }}
+          auth_password: ${{ secrets.AUTH_PASSWORD }}
 
