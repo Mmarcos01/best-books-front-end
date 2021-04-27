@@ -20,9 +20,8 @@ describe('Authenticated', () => {
     it('should see landing page', () => {
       cy.get('[cy-data=logout-button]').should('be.visible');
     });
-
-    it('i need to write more tests');
   });
+
   describe('Profile Page', () => {
     it('should see profile page', () => {
       cy.visit('profile');

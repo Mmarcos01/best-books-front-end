@@ -24,44 +24,16 @@
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
 // From auth0 Cypress integration https://auth0.com/blog/end-to-end-testing-with-cypress-and-auth0/ - modified
-Cypress.Commands.add('login', (overrides = {}) => {
-  Cypress.log({
-    name: 'loginViaAuth0',
+Cypress.Commands.add('login', () => {
+  cy.forceVisit('https://best-books.us.auth0.com/v2/logout').then(() => {
+    cy.visit('');
   });
-  cy.intercept('POST', Cypress.env('auth_url')).as('login');
-  cy.wait(100);
-  const options = {
-    method: 'POST',
-    url: Cypress.env('auth_url'),
-    body: {
-      grant_type: 'password',
-      username: Cypress.env('auth_username'),
-      password: Cypress.env('auth_password'),
-      audience: Cypress.env('auth_audience'),
-      scope: 'openid profile email',
-      client_id: Cypress.env('auth_client_id'),
-      client_secret: Cypress.env('auth_client_secret'),
-    },
-  };
-  cy.request(options)
-    .then((resp) => {
-      return resp.body;
-    })
-    .then((body) => {
-      const { access_token } = body;
-      cy.visit('/', {
-        headers: {
-          Authorization: `Bearer ${access_token}`,
-        }
-      });
-    })
-    .then(() => {
-      cy.setCookie('auth0.is.authenticated', 'true');
-      cy.setCookie('_legacy_auth0.is.authenticated', 'true');
-    });
-  cy.wait(100);
-  cy.wait('@login');
+  cy.get('[cy-data=login-button]').click();
+  cy.get('#username').type(Cypress.env('auth_username'));
+  cy.get('#password').type(Cypress.env('auth_password'));
+  cy.contains('Continue').click();
 });
+
 
 // -- Save localStorage between tests
 let LOCAL_STORAGE_MEMORY = {};
@@ -75,5 +47,12 @@ Cypress.Commands.add('saveLocalStorage', () => {
 Cypress.Commands.add('restoreLocalStorage', () => {
   Object.keys(LOCAL_STORAGE_MEMORY).forEach(key => {
     localStorage.setItem(key, LOCAL_STORAGE_MEMORY[key]);
+  });
+});
+
+// -- Visit multiple domains in one test
+Cypress.Commands.add('forceVisit', url => {
+  cy.window().then(win => {
+    return win.open(url, '_self');
   });
 });
