@@ -29,8 +29,8 @@ Cypress.Commands.add('login', () => {
     cy.visit('');
   });
   cy.get('[cy-data=login-button]').click();
-  cy.get('#username').type(Cypress.env('auth_username'));
-  cy.get('#password').type(Cypress.env('auth_password'));
+  cy.get('#username').type(Cypress.env('AUTH_USERNAME'));
+  cy.get('#password').type(Cypress.env('AUTH_PASSWORD'));
   cy.contains('Continue').click();
 });
 

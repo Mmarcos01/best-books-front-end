@@ -25,7 +25,7 @@ describe('Authenticated', () => {
   describe('Profile Page', () => {
     it('should see profile page', () => {
       cy.visit('profile');
-      cy.get('[cy-data=user-email]').should('contain.text', Cypress.env('auth_username'));
+      cy.get('[cy-data=user-email]').should('contain.text', Cypress.env('AUTH_USERNAME'));
       cy.get('[cy-data=logout-button]').should('be.visible');
     });
   });

@@ -29,12 +29,11 @@ jobs:
         uses: actions/checkout@v2
 
       # Will need later for external API's
-      # - name: Make envfile
-      #   uses: SpicyPizza/create-envfile@v1
-      #   with:
-      #     envkey_WEATHER_API_KEY: ${{ secrets.WEATHER_API_KEY }}
-      #     envkey_MOVIE_API_KEY: ${{ secrets.MOVIE_API_KEY }}
-      #     envkey_YELP_API_KEY: ${{ secrets.YELP_API_KEY }}
+      - name: Make envfile
+        uses: SpicyPizza/create-envfile@v1
+        with:
+          envkey_AUTH_USERNAME: ${{ secrets.AUTH_USERNAME }}
+          envkey_AUTH_PASSWORD: ${{ secrets.AUTH_PASSWORD }}
 
       # Runs a single command using the runners shell
       - name: Cypress run
@@ -45,9 +44,3 @@ jobs:
           browser: chrome
           headless: true
           spec: cypress/integration/*.spec.js
-        env:
-          # pass the secret keys as an environment variable
-          auth_client_secret: ${{ secrets.AUTH_CLIENT_SECRET }}
-          auth_username: ${{ secrets.AUTH_USERNAME }}
-          auth_password: ${{ secrets.AUTH_PASSWORD }}
-
