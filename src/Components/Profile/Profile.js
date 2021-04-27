@@ -1,7 +1,8 @@
-import React from "react";
-import Card from 'react-bootstrap/Card';
-import './Profile.css';
+import React from 'react';
+import { Card } from 'react-bootstrap';
 import { withAuth0 } from '@auth0/auth0-react';
+
+import './Profile.css';
 
 class Profile extends React.Component {
   render() {
@@ -16,13 +17,13 @@ class Profile extends React.Component {
               </div>
               <Card.Body class='profile-body'>
                 <Card.Title>{user.name}</Card.Title>
-                <h6>{user.email}</h6>
+                <h6 cy-data='user-email'>{user.email}</h6>
               </Card.Body>
             </Card>
           </div> : ''}
       </>
-    )
-  };
+    );
+  }
 }
 
 export default withAuth0(Profile);

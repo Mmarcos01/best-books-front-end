@@ -9,15 +9,15 @@ import LogoutButton from '../LogoutButton/LogoutButton';
 import './Header.css';
 
 class Header extends React.Component {
-  
+
   render() {
     const { isAuthenticated } = this.props.auth0;
     return(
       <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
-      <Navbar.Brand href="/">Best Books</Navbar.Brand>
-      <Navbar.Toggle aria-controls="responsive-navbar-nav" />
-      { isAuthenticated
-        ? <Navbar.Collapse id="responsive-navbar-nav">
+        <Navbar.Brand href="/">Best Books</Navbar.Brand>
+        <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+        { isAuthenticated
+          ? <Navbar.Collapse id="responsive-navbar-nav">
             <Nav className="mr-auto">
               <Nav.Link href="/bookshelf">Book Shelf</Nav.Link>
               <Nav.Link href="/profile">Profile</Nav.Link>
@@ -26,13 +26,13 @@ class Header extends React.Component {
               <LogoutButton />
             </Nav>
           </Navbar.Collapse>
-        : <Navbar.Collapse id="responsive-navbar-nav">
+          : <Navbar.Collapse id="responsive-navbar-nav">
             <Nav className="ml-auto">
               <LoginButton />
             </Nav>
           </Navbar.Collapse>
-      }
-    </Navbar>
+        }
+      </Navbar>
     );
   }
 }

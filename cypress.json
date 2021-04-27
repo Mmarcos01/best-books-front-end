@@ -1,0 +1,9 @@
+{
+  "baseUrl": "http://localhost:3000",
+  "chromeWebSecurity": false,
+  "env": {
+    "auth_audience": "https://best-books.us.auth0.com/api/v2/",
+    "auth_url": "https://best-books.us.auth0.com/oauth/token",
+    "auth_client_id": "eZlt9rLo1f1j9kGvPMnzF2PxaGknkckE"
+  }
+}
