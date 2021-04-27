@@ -16,11 +16,13 @@
  * @type {Cypress.PluginConfig}
  */
 // eslint-disable-next-line no-unused-vars
-const dotenvPlugin = require('cypress-dotenv');
 module.exports = (on, config) => {
-  // `on` is used to hook into various events Cypress emits
-  // `config` is the resolved Cypress config
-  config = dotenvPlugin(config);
-  return config;
+  const configWithDotenv = require('dotenv').config();
+  if (configWithDotenv.error) {
+    throw configWithDotenv.error;
+  }
+  const env = { ...config.env, ...configWithDotenv.parsed };
+  const result = { ...config, env };
+  return result;
 };
 
