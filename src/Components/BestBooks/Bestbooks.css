@@ -1,0 +1,26 @@
+.carousel.slide {
+  min-height: 100%;
+  display: grid;
+  grid-template-rows: 100px 100px auto;
+  grid-template-columns: 1fr;
+  grid-template-areas:
+  'title'
+  'description'
+  'slider';
+}
+
+.title {
+  grid-area: title;
+}
+
+.description {
+  grid-area: description;
+}
+
+.carousel-indicators {
+  grid-area: slider;
+}
+
+.carousel-indicators li {
+  background-color: black;
+}
