@@ -13,48 +13,38 @@ class BestBooks extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      haveSearched: false,
       books: [],
       errors: '',
       email: this.props.auth0.user.email
     };
   }
 
-  handleSearch = async(email) => {
-    if(!email) {
-      console.warn('No Username Provided!');
-    } else {
-      try {
-        let response = await axios.get(`${SERVER_URL}/books?email=${email}`);
-        console.log(response);
-        this.setState({
-          books: response.data,
-          hasSearched: true
-        });
-      } catch(err) {
-        this.setState({
-          errors: err.toString()
-        });
-      }
+  componentDidMount = async() => {
+    try {
+      const bookData = await axios.get(`${SERVER_URL}/books?email=${this.state.email}`);
+      this.setState({
+        books: bookData.data
+      });
+    } catch(err) {
+      this.setState({
+        errors: err.toString()
+      });
     }
   }
-
+  
   render() {
     const { isAuthenticated } = this.props.auth0;
-    let results = [];
-    this.state.books.forEach((item, index) => {
-      results.push(
-        <Carousel.Item key={index}>
-          <div>
-            <h3 className="title">{item.name}</h3>
-            <p className="description">{item.description}</p>
-          </div>
-        </Carousel.Item>
-      );
-    });
+    let results = this.state.books.map(item => 
+      <Carousel.Item key={item._id}>
+        <div>
+          <h3 className="title">{item.name}</h3>
+          <p className="description">{item.description}</p>
+        </div>
+      </Carousel.Item>
+    );
     return(
-      <div className="carousel" onLoad={ !this.state.hasSearched && this.handleSearch(this.state.email)}>
-        {isAuthenticated ? <Carousel>{results}</Carousel> : ''}
+      <div className="carousel">
+        {isAuthenticated && this.state.books.length ? <Carousel>{results}</Carousel> : ''}
       </div>
     );
   }
