@@ -34,17 +34,14 @@ class BestBooks extends React.Component {
   
   render() {
     const { isAuthenticated } = this.props.auth0;
-    let results = [];
-    this.state.books.forEach((item) => {
-      results.push(
-        <Carousel.Item key={item._id}>
-          <div>
-            <h3 className="title">{item.name}</h3>
-            <p className="description">{item.description}</p>
-          </div>
-        </Carousel.Item>
-      );
-    });
+    let results = this.state.books.map(item => 
+      <Carousel.Item key={item._id}>
+        <div>
+          <h3 className="title">{item.name}</h3>
+          <p className="description">{item.description}</p>
+        </div>
+      </Carousel.Item>
+    );
     return(
       <div className="carousel">
         {isAuthenticated && this.state.books.length ? <Carousel>{results}</Carousel> : ''}
