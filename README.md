@@ -37,6 +37,7 @@
 |04-24-2021 11:45am PST | Initialize Repository |
 |04-24-2021 3:15PM PST | Integrate Auth0 |
 |04-24-2021 4:30pm PST | Implement Features: Profile, Bookshelf |
+|04-28-2021 10:00pm PST | Implement Feature: BestBooks - Book Tracking |
 
 <!-- TODO --->
 
