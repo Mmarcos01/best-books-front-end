@@ -1,7 +1,7 @@
-import React from "react";
-import { withAuth0 } from "@auth0/auth0-react";
-import "bootstrap/dist/css/bootstrap.min.css";
-import { Button } from "react-bootstrap";
+import React from 'react';
+import { withAuth0 } from '@auth0/auth0-react';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import { Button } from 'react-bootstrap';
 
 class AddBookButton extends React.Component {
   render() {
@@ -10,9 +10,9 @@ class AddBookButton extends React.Component {
       <>
         {isAuthenticated && this.props.display ? (
           <Button
-            cy-data="add-book"
-            className="m-2"
-            variant="outline-primary"
+            cy-data='add-book'
+            className='m-2'
+            variant='outline-primary'
             onClick={this.props.displayFlip}
           >
             Add Book

@@ -1,15 +1,15 @@
-import React from "react";
-import { withAuth0 } from "@auth0/auth0-react";
-import "bootstrap/dist/css/bootstrap.min.css";
+import React from 'react';
+import { withAuth0 } from '@auth0/auth0-react';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
-import { Modal, Form } from "react-bootstrap";
+import { Modal, Form } from 'react-bootstrap';
 
 class BookFormModal extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       books: [],
-      errors: "",
+      errors: '',
       email: this.props.auth0.user.email,
     };
   }
@@ -44,31 +44,31 @@ class BookFormModal extends React.Component {
                 <Form.Group>
                   <Form.Label>Title</Form.Label>
                   <Form.Control
-                    name="name"
-                    type="text"
-                    placeholder="Enter Title"
+                    name='name'
+                    type='text'
+                    placeholder='Enter Title'
                   />
                   <Form.Label>Description</Form.Label>
                   <Form.Control
-                    name="description"
-                    type="textarea"
-                    placeholder="Enter Description"
+                    name='description'
+                    type='textarea'
+                    placeholder='Enter Description'
                   />
                   <fieldset>
                     <Form.Group>
                       <Form.Check
-                        type="radio"
-                        name="radiobtn"
-                        label="Read"
-                        id="radio-read"
-                        value="1"
+                        type='radio'
+                        name='radiobtn'
+                        label='Read'
+                        id='radio-read'
+                        value='1'
                       />
                       <Form.Check
-                        type="radio"
-                        name="radiobtn"
-                        label="Unread"
-                        id="radio-not-read"
-                        value="0"
+                        type='radio'
+                        name='radiobtn'
+                        label='Unread'
+                        id='radio-not-read'
+                        value='0'
                       />
                     </Form.Group>
                   </fieldset>
@@ -79,7 +79,7 @@ class BookFormModal extends React.Component {
             </Modal.Body>
           </Modal>
         ) : (
-          ""
+          ''
         )}
       </>
     );

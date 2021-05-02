@@ -1,21 +1,21 @@
-import React from "react";
-import axios from "axios";
-import { withAuth0 } from "@auth0/auth0-react";
-import AddBookButton from "../AddBookButton/AddBookButton";
-import BookFormModal from "../BookFormModal/BookFormModal";
-// import DeleteBooksButton from "../DeleteBooksButton/DeleteBooksButton";
-// import "bootstrap/dist/css/bootstrap.min.css";
-// import { Carousel } from "react-bootstrap";
-import "./Bestbooks.css";
+import React from 'react';
+import axios from 'axios';
+import { withAuth0 } from '@auth0/auth0-react';
+import AddBookButton from '../AddBookButton/AddBookButton';
+import BookFormModal from '../BookFormModal/BookFormModal';
+// import DeleteBooksButton from '../DeleteBooksButton/DeleteBooksButton';
+// import 'bootstrap/dist/css/bootstrap.min.css';
+// import { Carousel } from 'react-bootstrap';
+import './Bestbooks.css';
 
-const SERVER_URL = process.env.REACT_APP_SERVER_URL || "http://localhost:3001";
+const SERVER_URL = process.env.REACT_APP_SERVER_URL || 'http://localhost:3001';
 
 class BestBooks extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       books: [],
-      errors: "",
+      errors: '',
       email: this.props.auth0.user.email,
       display: true,
     };
@@ -75,15 +75,15 @@ class BestBooks extends React.Component {
     let results = this.state.books.map((item) => (
       <div key={item._id}>
         <div>
-          <h3 className="title">{item.name}</h3>
-          <p className="description">{item.description}</p>
+          <h3 className='title'>{item.name}</h3>
+          <p className='description'>{item.description}</p>
           <button onClick={() => this.handleDeleteBook(item._id)}>Delete Book</button>
         </div>
       </div>
     ));
 
     return (
-      <div className="carousel">
+      <div className='carousel'>
         {isAuthenticated ? (
           <>
             <div>{results}</div>
@@ -98,7 +98,7 @@ class BestBooks extends React.Component {
             />
           </>
         ) : (
-          ""
+          ''
         )}
       </div>
     );
