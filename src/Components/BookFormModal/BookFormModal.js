@@ -1,16 +1,15 @@
-import React from 'react';
-import { withAuth0 } from '@auth0/auth0-react';
-import 'bootstrap/dist/css/bootstrap.min.css';
+import React from "react";
+import { withAuth0 } from "@auth0/auth0-react";
+import "bootstrap/dist/css/bootstrap.min.css";
 
-import { Modal, Form } from 'react-bootstrap';
-
+import { Modal, Form } from "react-bootstrap";
 
 class BookFormModal extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       books: [],
-      errors: '',
+      errors: "",
       email: this.props.auth0.user.email,
     };
   }
@@ -18,17 +17,16 @@ class BookFormModal extends React.Component {
   handleFormInput = (e) => {
     e.preventDefault();
     console.log(e.target);
-    this.props.handleAddBook(
-      {
-        email: this.state.email,
-        books: [
-          {
-            name: e.target.name.value,
-            description: e.target.description.value,
-            status: Boolean(+e.target.radiobtn.value),
-          }]
-      }
-    );
+    this.props.handleAddBook({
+      email: this.state.email,
+      books: [
+        {
+          name: e.target.name.value,
+          description: e.target.description.value,
+          status: Boolean(+e.target.radiobtn.value),
+        },
+      ],
+    });
     this.props.displayFlip();
   };
 
@@ -36,8 +34,7 @@ class BookFormModal extends React.Component {
     const { isAuthenticated } = this.props.auth0;
     return (
       <>
-        {isAuthenticated && !this.props.display
-          ?
+        {isAuthenticated && !this.props.display ? (
           <Modal show={!this.props.display} onHide={this.props.displayFlip}>
             <Modal.Header closeButton>
               <Modal.Title>Add Books</Modal.Title>
@@ -46,16 +43,32 @@ class BookFormModal extends React.Component {
               <Form onSubmit={this.handleFormInput}>
                 <Form.Group>
                   <Form.Label>Title</Form.Label>
-                  <Form.Control name="name" type="text" placeholder="Enter Title" />
+                  <Form.Control
+                    name="name"
+                    type="text"
+                    placeholder="Enter Title"
+                  />
                   <Form.Label>Description</Form.Label>
-                  <Form.Control name="description" type="textarea" placeholder="Enter Description" />
+                  <Form.Control
+                    name="description"
+                    type="textarea"
+                    placeholder="Enter Description"
+                  />
                   <fieldset>
                     <Form.Group>
                       <Form.Check
-                        type="radio" name="radiobtn" label="Read" id="radio-read" value="1"
+                        type="radio"
+                        name="radiobtn"
+                        label="Read"
+                        id="radio-read"
+                        value="1"
                       />
                       <Form.Check
-                        type="radio" name="radiobtn" label="Unread" id="radio-not-read" value="0"
+                        type="radio"
+                        name="radiobtn"
+                        label="Unread"
+                        id="radio-not-read"
+                        value="0"
                       />
                     </Form.Group>
                   </fieldset>
@@ -64,11 +77,10 @@ class BookFormModal extends React.Component {
                 <button onClick={this.props.displayFlip}>Close</button>
               </Form>
             </Modal.Body>
-
-
-
           </Modal>
-          : ''}
+        ) : (
+          ""
+        )}
       </>
     );
   }
