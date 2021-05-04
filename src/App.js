@@ -12,6 +12,8 @@ import { withAuth0 } from '@auth0/auth0-react';
 import Bookshelf from './Components/Bookshelf/Bookshelf';
 import Profile from './Components/Profile/Profile';
 
+import './App.css';
+
 class App extends React.Component {
   render() {
     return (
