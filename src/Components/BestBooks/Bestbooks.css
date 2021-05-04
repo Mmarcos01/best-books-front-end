@@ -1,26 +1,23 @@
-.carousel.slide {
+.carousel {
   min-height: 100%;
   display: grid;
-  grid-template-rows: 100px 100px auto;
+  grid-template-rows: 200px 100px;
   grid-template-columns: 1fr;
   grid-template-areas:
-  'title'
-  'description'
-  'slider';
+  'book-info'
+  'add-book';
 }
 
-.title {
-  grid-area: title;
+.book-info {
+  grid-area: book-info;
+  text-align: center;
 }
 
-.description {
-  grid-area: description;
+.add-book-button {
+  grid-area: add-book;
+  text-align: center;
 }
 
-.carousel-indicators {
-  grid-area: slider;
-}
-
-.carousel-indicators li {
-  background-color: black;
+[class^=carousel] {
+  background-color: grey;
 }
