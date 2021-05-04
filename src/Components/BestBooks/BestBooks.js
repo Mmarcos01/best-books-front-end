@@ -3,9 +3,9 @@ import axios from 'axios';
 import { withAuth0 } from '@auth0/auth0-react';
 import AddBookButton from '../AddBookButton/AddBookButton';
 import BookFormModal from '../BookFormModal/BookFormModal';
-// import DeleteBooksButton from '../DeleteBooksButton/DeleteBooksButton';
-// import 'bootstrap/dist/css/bootstrap.min.css';
-// import { Carousel } from 'react-bootstrap';
+import DeleteBooksButton from '../DeleteBooksButton/DeleteBooksButton';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import { Carousel } from 'react-bootstrap';
 import './Bestbooks.css';
 
 const SERVER_URL = process.env.REACT_APP_SERVER_URL || 'http://localhost:3001';
@@ -40,7 +40,8 @@ class BestBooks extends React.Component {
     }
   };
 
-  handleDeleteBook = async (id) => {
+  handleDeleteBook = async (e, id) => {
+    e.preventDefault();
     try {
       let bookData = await axios.delete(
         `${SERVER_URL}/books/${id}?email=${this.state.email}`
@@ -73,29 +74,31 @@ class BestBooks extends React.Component {
   render() {
     const { isAuthenticated } = this.props.auth0;
     let results = this.state.books.map((item) => (
-      <div key={item._id}>
-        <div>
-          <h3 className='title'>{item.name}</h3>
-          <p className='description'>{item.description}</p>
-          <button onClick={() => this.handleDeleteBook(item._id)}>Delete Book</button>
+      <Carousel.Item key={item._id}>
+        <div className='book-info'>
+          <h3>{item.name}</h3>
+          <p>{item.description}</p>
+          <DeleteBooksButton onClick={(e) => this.handleDeleteBook(e, item._id)}>Delete Book</DeleteBooksButton>
         </div>
-      </div>
+      </Carousel.Item>
     ));
 
     return (
       <div className='carousel'>
         {isAuthenticated ? (
           <>
-            <div>{results}</div>
+            <Carousel>{results}</Carousel>
             <BookFormModal
               handleAddBook={this.handleAddBook}
               displayFlip={this.displayFlip}
               display={this.state.display}
             />
-            <AddBookButton
-              displayFlip={this.displayFlip}
-              display={this.state.display}
-            />
+            <div className='add-book-button'>
+              <AddBookButton
+                displayFlip={this.displayFlip}
+                display={this.state.display}
+              />
+            </div>
           </>
         ) : (
           ''
