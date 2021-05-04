@@ -12,7 +12,7 @@ class AddBookButton extends React.Component {
           <Button
             cy-data='add-book'
             className='m-2'
-            variant='outline-primary'
+            variant='dark'
             onClick={this.props.displayFlip}
           >
             Add Book
