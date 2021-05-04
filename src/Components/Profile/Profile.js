@@ -10,17 +10,19 @@ class Profile extends React.Component {
     return (
       <>
         {isAuthenticated ?
-          <div className='profile-card'>
-            <Card style={{ width: '18rem' }}>
-              <div className='profile-img'>
-                <Card.Img className='img' src={user.picture} />
-              </div>
-              <Card.Body className='profile-body'>
-                <Card.Title>{user.name}</Card.Title>
-                <h6 cy-data='user-email'>{user.email}</h6>
-              </Card.Body>
-            </Card>
-          </div> : ''}
+          <>
+            <section className='profile-card'>
+              <Card style={{ width: '18rem' }}>
+                <div className='profile-img'>
+                  <Card.Img className='img' src={user.picture} />
+                </div>
+                <Card.Body className='profile-body'>
+                  <Card.Title>{user.name}</Card.Title>
+                  <h6 cy-data='user-email'>{user.email}</h6>
+                </Card.Body>
+              </Card>
+            </section>
+          </> : ''}
       </>
     );
   }
