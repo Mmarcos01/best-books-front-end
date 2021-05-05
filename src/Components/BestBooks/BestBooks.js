@@ -40,8 +40,7 @@ class BestBooks extends React.Component {
     }
   };
 
-  handleDeleteBook = async (e, id) => {
-    e.preventDefault();
+  handleDeleteBook = async (id) => {
     try {
       let bookData = await axios.delete(
         `${SERVER_URL}/books/${id}?email=${this.state.email}`
@@ -78,7 +77,7 @@ class BestBooks extends React.Component {
         <div className='book-info'>
           <h3>{item.name}</h3>
           <p>{item.description}</p>
-          <DeleteBooksButton bookId={item._id} deleteBook={this.handleDeleteBook}>Delete Book</DeleteBooksButton>
+          <DeleteBooksButton bookId={item._id} deleteBook={this.handleDeleteBook} />
         </div>
       </Carousel.Item>
     ));
