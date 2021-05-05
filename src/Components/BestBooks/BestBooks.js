@@ -78,7 +78,7 @@ class BestBooks extends React.Component {
         <div className='book-info'>
           <h3>{item.name}</h3>
           <p>{item.description}</p>
-          <DeleteBooksButton onClick={(e) => this.handleDeleteBook(e, item._id)}>Delete Book</DeleteBooksButton>
+          <DeleteBooksButton bookId={item._id} deleteBook={this.handleDeleteBook}>Delete Book</DeleteBooksButton>
         </div>
       </Carousel.Item>
     ));
