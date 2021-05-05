@@ -9,7 +9,7 @@ class DeleteBooksButton extends React.Component {
     return (
       <>
         {isAuthenticated ? (
-          <Button className='m-2' variant='danger'>
+          <Button onClick={() => this.props.deleteBook(event, this.props.bookId)} className='m-2' variant='danger'>
             Delete
           </Button>
         ) : (
